@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Information Platform</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #007ACC;
+    color: #FFF;
+    text-align: center;
+    padding: 20px;
+}
+
+main {
+    padding: 20px;
+}
+
+#traffic-data {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+}
+</style>
+</head>
+<body>
+    <header>
+        <h1>Real-time Traffic Information Platform</h1>
+    </header>
+    <main>
+        <div id="traffic-data">
+            <!-- Traffic information will be displayed here -->
+        </div>
+    </main>
+    <script>
+	// Simulated real-time traffic data
+function generateRandomData() {
+    return {
+        roadName: "Main Street",
+        status: Math.random() < 0.5 ? "Clear" : "Congested",
+        congestionLevel: Math.floor(Math.random() * 100)
+    };
+}
+
+function updateData() {
+    const trafficDataElement = document.getElementById('traffic-data');
+    setInterval(() => {
+        const data = generateRandomData();
+        const timestamp = new Date().toLocaleTimeString();
+
+        // Update the data display
+        const newData = `<p>${timestamp}: Road: ${data.roadName}, Status: ${data.status}, Congestion: ${data.congestionLevel}%</p>`;
+        trafficDataElement.innerHTML = newData + trafficDataElement.innerHTML;
+    }, 3000); // Update data every 3 seconds
+}
+
+window.addEventListener('load', () => {
+    updateData();
+});
+</script>
+</body>
+</html>
